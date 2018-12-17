@@ -1,6 +1,7 @@
 package com.finansalbt.onlinequiz;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -65,8 +66,12 @@ public class MainActivity extends AppCompatActivity {
                     if (!user.isEmpty())
                     {
                         User login = dataSnapshot.child(user).getValue(User.class);
-                        if (login.getPassword().equals(pwd))
-                            Toast.makeText(MainActivity.this, "Login ok !", Toast.LENGTH_SHORT).show();
+                        if (login.getPassword().equals(pwd)) {
+                            Intent homeActivity = new Intent(MainActivity.this, HomeActivity.class);
+                            startActivity(homeActivity);
+                            finish();
+                        }
+
                         else
                             Toast.makeText(MainActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
                     }
