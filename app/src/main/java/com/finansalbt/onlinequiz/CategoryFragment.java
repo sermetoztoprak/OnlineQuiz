@@ -1,6 +1,7 @@
 package com.finansalbt.onlinequiz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.finansalbt.onlinequiz.Common.Common;
 import com.finansalbt.onlinequiz.Interface.ItemClickListener;
 import com.finansalbt.onlinequiz.Model.Category;
 import com.finansalbt.onlinequiz.ViewHolder.CategoryViewHolder;
@@ -79,7 +81,10 @@ public class CategoryFragment extends Fragment {
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void OnClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(getActivity(),String.format("%s|%s",adapter.getRef(position).getKey(),model.getName()), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(),String.format("%s|%s",adapter.getRef(position).getKey(),model.getName()), Toast.LENGTH_SHORT).show();
+                        Intent startGame = new Intent(getActivity(),StartActivity.class);
+                        Common.categoryId=adapter.getRef(position).getKey();
+                        startActivity(startGame);
                     }
                 });
             }

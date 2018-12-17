@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.finansalbt.onlinequiz.Common.Common;
 import com.finansalbt.onlinequiz.Model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         User login = dataSnapshot.child(user).getValue(User.class);
                         if (login.getPassword().equals(pwd)) {
                             Intent homeActivity = new Intent(MainActivity.this, HomeActivity.class);
+                            Common.currentUser=login;
                             startActivity(homeActivity);
                             finish();
                         }
