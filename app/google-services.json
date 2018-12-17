@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "246939013614",
+    "firebase_url": "https://quiz-47dc3.firebaseio.com",
+    "project_id": "quiz-47dc3",
+    "storage_bucket": "quiz-47dc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246939013614:android:5d158358e0f78bc8",
+        "android_client_info": {
+          "package_name": "com.finansalbt.onlinequiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246939013614-2678fug3j0aq7l6dpd1h77lsqibledkd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finansalbt.onlinequiz",
+            "certificate_hash": "4bca4800e3c21986793e910379e9e70cb3846127"
+          }
+        },
+        {
+          "client_id": "246939013614-3kb74fgqo0knh32oqrall1utuh883dod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDcsj1jEkTpxz0rwKddQLaT8LfsJdU-vw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246939013614-3kb74fgqo0knh32oqrall1utuh883dod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
