@@ -1,5 +1,7 @@
 package com.finansalbt.onlinequiz;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.finansalbt.onlinequiz.BroadcastReceiver.AlarmReceiver;
 import com.finansalbt.onlinequiz.Common.Common;
 import com.finansalbt.onlinequiz.Model.User;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        registerAlarm();
+
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
 
@@ -58,6 +66,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void registerAlarm() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,11);
+        calendar.set(Calendar.MINUTE,32);
+        calendar.set(Calendar.SECOND,0);
+
+        Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager am = (AlarmManager)this.getSystemService(this.ALARM_SERVICE);
+        am.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+    }
+
     private void signIn(final String user, final String pwd) {
         users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
