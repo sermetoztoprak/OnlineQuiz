@@ -1,6 +1,7 @@
 package com.finansalbt.onlinequiz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -87,14 +88,16 @@ public class RankingFragment extends Fragment {
                 rankingTbl.orderByChild("score")
         ) {
             @Override
-            protected void populateViewHolder(RankingViewHolder viewHolder, Ranking model, int position) {
+            protected void populateViewHolder(RankingViewHolder viewHolder, final Ranking model, int position) {
                 viewHolder.txt_name.setText(model.getUserName());
                 viewHolder.txt_score.setText(String.valueOf(model.getScore()));
 
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void OnClick(View view, int position, boolean isLongClick) {
-
+                        Intent scoreDetail = new Intent(getActivity(),ScoreDetailActivity.class);
+                        scoreDetail.putExtra("viewUser",model.getUserName());
+                        startActivity(scoreDetail);
                     }
                 });
             }
